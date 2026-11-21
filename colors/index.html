@@ -66,6 +66,71 @@ td,th{border-color:var(--line)}
 body{background:var(--paper);color:var(--ink);transition:background .25s,color .25s;font-family:'DM Sans',Inter,system-ui,sans-serif}header{background:var(--header);backdrop-filter:blur(18px)}.hero h1,.sectionHead h2{font-family:Manrope,system-ui,sans-serif;letter-spacing:-.06em}.hero h1{font-size:clamp(48px,6.5vw,86px);line-height:.98}.hero{padding-top:78px;padding-bottom:60px}.card,.stat,.article,.tool,.result,.tableWrap,.swatch{background:var(--card);border-color:var(--line);box-shadow:var(--shadow)}.card{transition:transform .2s,border-color .2s}.card:hover,.swatch:hover{transform:translateY(-4px);border-color:var(--accent)}.swatchColor{height:100px}.article{padding:28px}.articleCols{gap:12px}.articleCols>div{padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}.articleCols h4{color:var(--accent)}.searchbar input,.searchbar select,.control,.pill,.menuBtn{background:var(--card);color:var(--ink);border-color:var(--line)}.notice{background:var(--soft);color:var(--muted)}.wheel{background:conic-gradient(#df443e 0 27.7deg,#ee8b35 27.7deg 55.4deg,#e9ca42 55.4deg 83.1deg,#5b9b61 83.1deg 110.8deg,#279f9b 110.8deg 138.5deg,#62b7d4 138.5deg 166.2deg,#416db1 166.2deg 193.9deg,#8056a4 193.9deg 221.6deg,#dc8fa9 221.6deg 249.3deg,#8b5b3e 249.3deg 277deg,#eee9dc 277deg 304.7deg,#92948f 304.7deg 332.4deg,#292b2b 332.4deg)}.wheel:after{background:var(--paper);box-shadow:0 0 0 8px var(--paper)}.wheelText{color:var(--ink)}.researchBox{background:#202b24}.exampleBoard{display:flex;gap:0;height:68px;border-radius:11px;overflow:hidden;margin:14px 0}.exampleBoard span{flex:1}.articleActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.miniBtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:7px 11px;font-size:11px;font-weight:700}.favMini{position:absolute;right:8px;top:8px;border:1px solid #ffffff88;background:#1118;color:white;width:29px;height:29px;border-radius:50%;z-index:2}.favMini.on{background:white;color:#a33355}.swatch{position:relative;cursor:pointer}.swatchInfo{display:block;padding:11px 12px}.swatchColor{display:block}.articleTop{align-items:center}.colorPair{display:flex;gap:7px;margin-top:10px}.colorPair span{height:28px;flex:1;border-radius:6px}.articleFoot{margin-top:18px;padding:14px 16px;background:var(--soft);border-radius:12px;color:var(--muted);font-size:12px}.contrastPreview{border-radius:13px;padding:22px;text-align:center;font-size:23px;font-weight:800;margin-top:14px;min-height:80px;display:grid;place-items:center}.contrastStats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.contrastStats span{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:8px 11px}.catalogMeta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:12px}.article h3{font-family:Manrope}.sectionHead h2{font-size:clamp(30px,4vw,46px)}.heroArt .orb{box-shadow:0 25px 70px #2222}.themeBtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:9px 13px;font-size:12px;font-weight:700}
 @media(max-width:850px){.searchbar{display:grid;grid-template-columns:1fr 1fr}.searchbar input{grid-column:1/-1}.navlinks{background:var(--paper)}}@media(max-width:560px){.hero{padding-top:44px}.hero h1{font-size:clamp(44px,12vw,60px)}.article{padding:16px}.articleCols{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}.sectionHead{display:block}.sectionHead p{margin-top:10px}}
 </style>
+
+<style id="chroma-polish">
+:root{--ease-out:cubic-bezier(.22,.8,.25,1);--ease-spring:cubic-bezier(.2,.75,.25,1);--focus-ring:0 0 0 3px color-mix(in srgb,var(--accent) 24%,transparent)}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{letter-spacing:.002em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{letter-spacing:-.035em;text-wrap:balance}
+h1{line-height:1.06}h2{line-height:1.16}p{ text-wrap:pretty}
+section{scroll-margin-top:92px}
+a,button,.card,.stat,.swatch,.article,.tool,.orbitNote,.pill,.control,.miniBtn,.themeBtn,.menuBtn{transition:color .2s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out),box-shadow .24s var(--ease-out),transform .24s var(--ease-out),opacity .2s var(--ease-out)}
+:where(a,button,input,select,[role=button],.swatch):focus-visible{outline:none;box-shadow:var(--focus-ring);border-color:var(--accent)}
+.btn,.themeBtn,.menuBtn,.miniBtn,.favMini,.pill{border-radius:999px}
+.btn{box-shadow:0 5px 14px rgba(28,35,27,.09);transform:translateY(0)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(28,35,27,.14);filter:saturate(1.04)}
+.btn:active,.themeBtn:active,.menuBtn:active,.miniBtn:active,.pill:active{transform:translateY(1px) scale(.985);box-shadow:none}
+.btn.secondary{box-shadow:0 2px 8px rgba(28,35,27,.035)}
+.themeBtn:hover,.menuBtn:hover,.miniBtn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(28,35,27,.08)}
+.card,.stat,.swatch,.article,.result,.tableWrap,.tool{border-radius:var(--radius);transition:transform .28s var(--ease-spring),box-shadow .28s var(--ease-out),border-color .22s var(--ease-out),background-color .22s var(--ease-out)}
+.card:hover,.stat:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(31,36,29,.085);border-color:color-mix(in srgb,var(--accent) 28%,var(--line))}
+.swatch{overflow:hidden;position:relative}
+.swatch:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(31,36,29,.12);border-color:color-mix(in srgb,var(--accent) 34%,var(--line))}
+.swatchColor{transition:transform .35s var(--ease-spring),filter .25s ease}
+.swatch:hover .swatchColor{transform:scale(1.035);filter:saturate(1.06)}
+.favMini{transition:transform .2s var(--ease-spring),background .2s ease,color .2s ease}
+.favMini:hover{transform:scale(1.12)}
+.favMini:active{transform:scale(.9)}
+.orbitNote{transition:transform .3s var(--ease-spring),box-shadow .3s ease}
+.orbitNote:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 14px 30px rgba(31,36,29,.12)}
+.navlinks a{position:relative;text-decoration:none;transition:color .2s ease,background .2s ease}
+.navlinks a:after{content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;border-radius:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .22s var(--ease-out)}
+.navlinks a:hover:after,.navlinks a.is-active:after{transform:scaleX(1)}
+.navlinks a.is-active{color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+header{transition:background-color .25s ease,box-shadow .25s ease}
+header.scrolled{box-shadow:0 8px 28px rgba(20,25,20,.055)}
+#toast{max-width:calc(100vw - 32px);padding:12px 17px!important;border:1px solid color-mix(in srgb,var(--paper) 20%,transparent);border-radius:999px!important;box-shadow:0 12px 32px rgba(0,0,0,.2);font-size:13px!important;font-weight:650;letter-spacing:.01em;backdrop-filter:blur(14px);opacity:0;transform:translate(-50%,12px)!important;transition:opacity .22s ease,transform .22s var(--ease-spring);pointer-events:none}
+#toast:not(.hidden){opacity:1;transform:translate(-50%,0)!important}
+.reveal-ready .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease-out),transform .55s var(--ease-spring)}
+.reveal-ready .reveal.is-visible{opacity:1;transform:none}
+.reveal-ready .reveal:nth-child(3n+2){transition-delay:55ms}
+.reveal-ready .reveal:nth-child(3n){transition-delay:100ms}
+#article{animation:article-in .36s var(--ease-out) both}
+@keyframes article-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.searchbar input,.searchbar select,.control{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.searchbar input:focus,.searchbar select:focus,.control:focus{outline:none;box-shadow:var(--focus-ring);border-color:var(--accent)}
+.palette span{transition:transform .22s var(--ease-spring),box-shadow .22s ease}
+.palette span:hover{transform:translateY(-4px) scale(1.045);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+@media(max-width:850px){
+ html{scroll-padding-top:76px}
+ .wrap{padding-left:18px;padding-right:18px}
+ .nav{gap:10px}
+ .navlinks{box-shadow:0 16px 34px rgba(20,25,20,.1);border:1px solid var(--line);border-radius:18px;padding:8px}
+ .navlinks a{padding:11px 13px;border-radius:12px}
+ .navlinks a:after{display:none}
+ .btn,.themeBtn,.menuBtn,.miniBtn{min-height:42px}
+ .swatch{min-height:76px}
+ .favMini{min-width:38px;min-height:38px}
+ .card:hover,.stat:hover,.swatch:hover{transform:none}
+ .card:active,.swatch:active{transform:scale(.99)}
+ #toast{bottom:calc(18px + env(safe-area-inset-bottom))!important}
+}
+@media(hover:none){.card:hover,.stat:hover,.swatch:hover,.btn:hover{transform:none;box-shadow:initial}.swatch:active,.btn:active{transform:scale(.985)}}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+ .reveal-ready .reveal{opacity:1!important;transform:none!important}
+}
+</style>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="#home">ПСИХОЛОГИЯ <span>ЦВЕТА</span></a><div class="navTools"><button class="themeBtn" id="themeBtn" type="button" aria-label="Изменить тему" title="Тема оформления">◐ <span>Тема</span></button><button class="menuBtn" id="menuBtn" aria-label="Открыть меню">☰</button></div><nav class="navlinks" id="navlinks"><a href="#catalog">Энциклопедия</a><a href="#science">Восприятие</a><a href="#life">Применение</a><a href="#palettes">Палитры</a><a href="#contrast">Контраст</a><a href="#research">Исследование</a><a href="#methodology">Методика</a><a href="#sources">Источники</a></nav></div></header>
@@ -326,7 +391,7 @@ function saveFavorites(){try{localStorage.setItem('color-favorites',JSON.stringi
 function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:99px;font-size:12px';document.body.append(t)}t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.add('hidden'),1600)}
 function copyText(t){if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(()=>toast('Скопировано')).catch(()=>toast('Не удалось скопировать'));else{let x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();try{document.execCommand('copy');toast('Скопировано')}catch(e){toast('Не удалось скопировать')}x.remove()}}
 function renderCatalog(){let q=search.value.toLowerCase().trim(),grp=groupFilter.value,lev=lightFilter.value;let list=colors.filter(c=>(!q||c[0].toLowerCase().includes(q)||c[2].toLowerCase().includes(q)||c[1].toLowerCase().includes(q))&&(!grp||c[2]===grp)&&(!lev||lightLevel(c[1])===lev)&&(!favoritesOnly||favoriteSet.has(c[0])));swatches.innerHTML='';if(!list.length){swatches.innerHTML='<div class="empty">Ничего не найдено. Измени запрос или фильтр.</div>'}list.forEach(c=>{let b=document.createElement('div');b.className='swatch';b.setAttribute('role','button');b.tabIndex=0;b.innerHTML=`<span class="swatchColor" style="background:${c[1]}"></span><span class="swatchInfo"><strong>${c[0]}</strong><small>${c[2]} · ${c[1]}</small></span><button class="favMini" type="button" aria-label="Избранное">${favoriteSet.has(c[0])?'♥':'♡'}</button>`;b.querySelector('.favMini').classList.toggle('on',favoriteSet.has(c[0]));b.querySelector('.favMini').onclick=e=>{e.stopPropagation();toggleFavorite(c[0])};b.onclick=()=>showArticle(c);b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showArticle(c)}};swatches.append(b)});$('#catalogCount').textContent=`${list.length} из ${colors.length} оттенков`;$('#favoritesToggle').textContent=favoritesOnly?'♥ Все оттенки':'☆ Избранное'}
-function toggleFavorite(name){favoriteSet.has(name)?favoriteSet.delete(name):favoriteSet.add(name);saveFavorites();renderCatalog();let c=colors.find(x=>x[0]===name);if(c&&!$('#article').classList.contains('hidden'))showArticle(c,false)}
+function toggleFavorite(name){let adding=!favoriteSet.has(name);adding?favoriteSet.add(name):favoriteSet.delete(name);saveFavorites();renderCatalog();toast(adding?'Добавлено в избранное':'Удалено из избранного');let c=colors.find(x=>x[0]===name);if(c&&!$('#article').classList.contains('hidden'))showArticle(c,false)}
 function showArticle(c,scroll=true){let [name,hex,group,assoc,plus,minus,use]=c,art=$('#article'),d=colorProfilesByName[name]||colorProfiles[group]||colorProfiles['Красные'];let n=parseInt(hex.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255,[h,ss,ll]=hexToHsl(hex);let other=[hslHex(h+180,Math.max(.3,ss),Math.max(.35,Math.min(.65,ll))),hslHex(h+30,Math.max(.3,ss),Math.max(.35,Math.min(.65,ll))),hslHex(h-30,Math.max(.3,ss),Math.max(.35,Math.min(.65,ll)))];art.dataset.color=name;art.classList.remove('hidden');art.innerHTML=`<div class="articleTop"><div class="bigChip" style="background:${hex}"></div><div><div class="eyebrow">${group} · ${hex}</div><h3>${name}</h3><p class="muted">${name} — самостоятельный образец в каталоге. Его точный вид определяют цифровые координаты, освещение, поверхность и соседние цвета.</p><div class="articleActions"><button class="miniBtn" id="favArticle">${favoriteSet.has(name)?'♥ В избранном':'♡ В избранное'}</button><button class="miniBtn" id="copyHex">Копировать HEX</button><button class="miniBtn" id="copyRgb">Копировать RGB</button></div></div></div><div class="articleCols"><div class="articleBlock"><h4>Физические свойства и визуальный характер</h4><p>${d[0]} Оттенок ${name.toLowerCase()} в этой палитре имеет RGB(${r}, ${g}, ${b}) и HSL(${Math.round(h)}°, ${Math.round(ss*100)}%, ${Math.round(ll*100)}%).</p></div><div class="articleBlock"><h4>Эмоциональные ассоциации</h4><p>${d[1]} Для этого образца отмечены ассоциации: ${assoc}. Это возможные смысловые связи, а не обещание определённой реакции.</p></div><div class="articleBlock"><h4>Выразительные стороны</h4><p>${plus}. Их уместность определяется задачей, площадью цветового поля и предпочтениями аудитории.</p></div><div class="articleBlock"><h4>Ограничения и риски восприятия</h4><p>${minus}. Освещение, фактура, соседние оттенки и характеристики экрана могут заметно менять визуальное впечатление.</p></div><div class="articleBlock"><h4>Светлота, насыщенность и подтон</h4><p>${d[2]} Светлота образца составляет около ${Math.round(ll*100)}%, насыщенность — ${Math.round(ss*100)}%. Осветление приближает его к пастельному варианту, затемнение увеличивает визуальную плотность, а снижение насыщенности делает цвет ближе к серому.</p></div><div class="articleBlock"><h4>Культурная символика</h4><p>${d[0]} Символические значения зависят от эпохи, страны, традиции и конкретной ситуации. Одно и то же сочетание может иметь разные значения в одежде, ритуале, рекламе и повседневном интерфейсе.</p></div><div class="articleBlock"><h4>Одежда и стиль</h4><p>${use}. В одежде оценивай цвет при дневном и искусственном освещении: фактура, блеск и соседние предметы меняют его вид. В качестве акцента ${name.toLowerCase()} можно поддержать нейтральной базой; для монохромного комплекта меняй светлоту и фактуру.</p></div><div class="articleBlock"><h4>Интерьер и предметная среда</h4><p>Перед окраской большой поверхности сделай пробный выкрас и посмотри его утром, днём и вечером. Учитывай ориентацию окон, цвет ламп, фактуру стен и размер комнаты. Для этого оттенка возможные области применения: ${use.toLowerCase()}.</p></div><div class="articleBlock"><h4>Реклама, графика и веб-дизайн</h4><p>${d[3]} В цифровой среде проверь контраст текста, различимость кнопок и состояния интерфейса. Не используй один цвет как единственный сигнал ошибки, успеха или категории — добавляй подпись, форму или пиктограмму.</p></div><div class="articleBlock"><h4>Сочетания с другими цветами</h4><p>Для начала попробуй дополнительный тон, соседний тёплый и соседний холодный оттенки. Гармония зависит не только от цветового круга, но и от пропорций, светлоты и насыщенности.</p><div class="colorPair">${other.map(x=>`<span title="${x}" style="background:${x}"></span>`).join('')}</div><p style="margin-top:8px">${other.join(' · ')}</p></div></div><div class="articleFoot"><strong>Научная оговорка.</strong> Систематический обзор 132 исследований и 42 266 участников из 64 стран описывает закономерности цвето-эмоциональных ассоциаций. Большинство работ изучало ассоциации, а не гарантированное изменение эмоций в конкретной ситуации. Ни один оттенок не действует одинаково на всех людей.</div>`;$('#favArticle').onclick=()=>toggleFavorite(name);$('#copyHex').onclick=()=>copyText(hex.toUpperCase());$('#copyRgb').onclick=()=>copyText(`rgb(${r}, ${g}, ${b})`);if(scroll)art.scrollIntoView({behavior:'smooth',block:'nearest'})}
 search.addEventListener("input",renderCatalog);groupFilter.addEventListener("change",renderCatalog);lightFilter.addEventListener("change",renderCatalog);$("#favoritesToggle").addEventListener("click",()=>{favoritesOnly=!favoritesOnly;renderCatalog()});
 function setGroup(g){groupFilter.value=g;renderCatalog();$("#wheelTitle").textContent=g;$("#wheelDescription").textContent=groupMap[g][2];document.querySelector("#catalog").scrollIntoView({behavior:"smooth"})}
@@ -349,6 +414,39 @@ document.querySelectorAll("[data-preset]").forEach(a=>a.addEventListener("click"
 
 // Theme: Auto follows the device; Light and Dark are remembered overrides.
 (()=>{const root=document.documentElement,btn=document.getElementById('themeBtn'),meta=document.getElementById('themeColorMeta'),media=window.matchMedia('(prefers-color-scheme: dark)');let mode='auto';try{let v=localStorage.getItem('color-site-theme');if(['auto','light','dark'].includes(v))mode=v}catch(e){}function apply(){let t=mode==='auto'?(media.matches?'dark':'light'):mode;root.dataset.theme=t;if(meta)meta.content=t==='dark'?'#101613':'#f3f1eb';btn.innerHTML=(mode==='auto'?'◐':mode==='dark'?'☾':'☀')+' <span>'+(mode==='auto'?'Авто':mode==='dark'?'Тёмная':'Светлая')+'</span>';btn.title='Тема: '+mode+'. Нажмите, чтобы переключить.'}btn.addEventListener('click',()=>{mode=mode==='auto'?'light':mode==='light'?'dark':'auto';try{localStorage.setItem('color-site-theme',mode)}catch(e){}apply()});media.addEventListener?.('change',()=>{if(mode==='auto')apply()});apply()})();
+
+
+// CHROMA interface polish: gentle reveal, section-aware navigation and clearer feedback.
+(()=> {
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const header=document.querySelector('header');
+ const nav=[...document.querySelectorAll('#navlinks a[href^="#"]')];
+ const sections=nav.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ const setActive=id=>nav.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+id));
+ if(!reduce && 'IntersectionObserver' in window){
+   document.body.classList.add('reveal-ready');
+   const revealTargets=[...document.querySelectorAll('main section,.hero,.stats,.card,.stat,.tool,.article,.swatch')];
+   revealTargets.forEach(el=>el.classList.add('reveal'));
+   const revealObserver=new IntersectionObserver(entries=>{
+     entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}});
+   },{threshold:.08,rootMargin:'0px 0px -36px 0px'});
+   revealTargets.forEach(el=>revealObserver.observe(el));
+ }
+ if('IntersectionObserver' in window && sections.length){
+   const navObserver=new IntersectionObserver(entries=>{
+     const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+     if(visible)setActive(visible.target.id);
+   },{rootMargin:'-22% 0px -66% 0px',threshold:[0,.15,.35,.6]});
+   sections.forEach(section=>navObserver.observe(section));
+ }
+ const onScroll=()=>{if(header)header.classList.toggle('scrolled',window.scrollY>8)};
+ onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+ document.querySelectorAll('#navlinks a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setActive(a.getAttribute('href').slice(1))));
+ const toastEl=document.getElementById('toast');
+ if(toastEl)toastEl.setAttribute('role','status');
+ const menu=document.getElementById('menuBtn'),links=document.getElementById('navlinks');
+ if(menu&&links){menu.setAttribute('aria-expanded','false');menu.addEventListener('click',()=>menu.setAttribute('aria-expanded',String(links.classList.contains('open'))));}
+})();
 
 </script>
 </body></html>
