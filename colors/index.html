@@ -87,7 +87,36 @@ select.chroma-native{position:absolute!important;width:1px!important;height:1px!
 .choiceHint{padding:0 20px 15px;color:var(--muted);font-size:12px}
 .choiceEmpty{grid-column:1/-1;padding:24px;text-align:center;color:var(--muted)}
 .choiceField.compact .choiceTrigger{min-height:43px;padding:8px 11px;border-radius:12px;font-size:13px}
-@media(max-width:640px){.choiceLayer{align-items:end;padding:0;background:rgba(5,9,6,.48)}.choicePanel,.choicePanel.wide{width:100%;max-height:min(78dvh,720px);border-radius:24px 24px 0 0;border-bottom:0;padding-bottom:env(safe-area-inset-bottom);transform:translateY(24px)}.choiceLayer.open .choicePanel{transform:translateY(0)}.choiceHead{padding:17px 18px 12px}.choiceOptions{grid-template-columns:1fr 1fr;padding:10px 14px 18px}.choiceField.compact .choiceTrigger{min-height:44px}}
+
+.choicePanel{min-height:0}
+.choiceOptions{flex:1 1 auto;min-height:0;overscroll-behavior:contain;overflow-y:auto;overflow-x:hidden;align-content:start}
+.choiceHint{flex:0 0 auto;position:relative;margin:0;padding:13px 20px 15px;border-top:1px solid var(--line);background:var(--card);line-height:1.5}
+.choiceLayer{overscroll-behavior:contain}
+.colorField{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:7px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);cursor:pointer;text-align:left}
+.colorField:hover,.colorField[aria-expanded="true"]{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.colorPreview{width:32px;height:32px;flex:0 0 32px;border:1px solid #0002;border-radius:10px;box-shadow:inset 0 0 0 1px #ffffff25}
+.colorFieldText{display:flex;flex:1;min-width:0;flex-direction:column;gap:1px}
+.colorFieldText strong{font-size:13px;font-weight:700}
+.colorFieldText small{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.colorOptions{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:12px 16px 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-content:start;gap:9px}
+.colorOption{min-width:0;display:flex;flex-direction:column;gap:6px;align-items:stretch;padding:7px;border:1px solid var(--line);border-radius:13px;background:var(--paper);color:var(--ink);text-align:left;cursor:pointer}
+.colorOption[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--soft)}
+.colorOption:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.colorOptionSwatch{height:42px;border-radius:8px;border:1px solid #0001}
+.colorOptionName{font-size:11px;line-height:1.25;overflow-wrap:anywhere}
+.colorOptionHex{font-size:9px;color:var(--muted);font-variant-numeric:tabular-nums}
+.colorPanelFoot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card);color:var(--muted);font-size:11px}
+@media(max-width:640px){
+ .choiceLayer{align-items:end;padding:0;background:rgba(5,9,6,.48)}
+ .choicePanel,.choicePanel.wide{width:100%;height:min(84dvh,760px);max-height:calc(100dvh - env(safe-area-inset-top) - 8px);min-height:min(52dvh,480px);border-radius:24px 24px 0 0;border-bottom:0;padding-bottom:env(safe-area-inset-bottom);transform:translateY(24px)}
+ .choiceLayer.open .choicePanel{transform:translateY(0)}
+ .choiceHead{padding:17px 18px 12px;flex:0 0 auto}
+ .choiceOptions{grid-template-columns:1fr 1fr;padding:10px 14px 16px}
+ .choiceHint{padding:12px 18px 14px}
+ .choiceField.compact .choiceTrigger{min-height:44px}
+ .colorOptions{grid-template-columns:repeat(3,minmax(0,1fr));padding:10px 13px 16px}
+ .colorPanelFoot{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+}
 @media(prefers-reduced-motion:reduce){.choiceLayer,.choicePanel,.choiceChevron,.choiceOption{transition:none!important}}
 </style>
 <style>
@@ -561,7 +590,32 @@ function open(sel,tr){if(active)close();const long=sel.options.length>18,layer=d
 function add(opt){const b=document.createElement('button');b.type='button';b.className='choiceOption';b.setAttribute('role','option');b.setAttribute('aria-selected',String(opt.value===sel.value));b.dataset.value=opt.value;if(sel.id==='situation'){const icons={interview:'◈',everyday:'◌',party:'✦',bedroom:'☾',kitchen:'⌂',office:'▦',website:'▤',logo:'◇',calm:'≈',energy:'✧',romance:'♡',business:'▣'},dot=document.createElement('span');dot.className='choiceDot';dot.style.cssText='display:grid;place-items:center;width:28px;height:28px;flex-basis:28px;border-radius:10px;background:var(--soft);color:var(--accent);font-size:15px;box-shadow:none';dot.textContent=icons[opt.value]||'•';b.append(dot)}else if(sel.id.startsWith('compare')){const c=colors[Number(opt.value)];if(c){const dot=document.createElement('span');dot.className='choiceDot';dot.style.background=c[1];b.append(dot)}}const t=document.createElement('span');t.textContent=opt.textContent;b.append(t);b.addEventListener('click',()=>{sel.value=opt.value;sel.dispatchEvent(new Event('change',{bubbles:true}));tr.querySelector('.choiceValue').textContent=opt.textContent;close()});list.append(b)}
 function render(q=''){list.innerHTML='';const needle=q.trim().toLocaleLowerCase('ru'),groupList=groups[sel.id];if(groupList){groupList.forEach(([name,values])=>{const found=opts.filter(o=>values.includes(o.value)&&(!needle||o.textContent.toLocaleLowerCase('ru').includes(needle)));if(found.length){const h=document.createElement('div');h.className='choiceGroupTitle';h.textContent=name;list.append(h);found.forEach(add)}})}else opts.filter(o=>!needle||o.textContent.toLocaleLowerCase('ru').includes(needle)).forEach(add);if(!list.querySelector('.choiceOption')){const e=document.createElement('div');e.className='choiceEmpty';e.textContent='Ничего не найдено';list.append(e)}}
 render();layer.addEventListener('click',e=>{if(e.target===layer)close()});closeBtn.addEventListener('click',close);search?.addEventListener('input',()=>render(search.value));tr.setAttribute('aria-expanded','true');active={layer,trigger:tr};document.addEventListener('keydown',keys,true);requestAnimationFrame(()=>{layer.classList.add('open');if(search)search.focus();else list.querySelector('.choiceOption')?.focus()})}
-selects.forEach(sel=>{sel.classList.add('chroma-native');sel.setAttribute('aria-hidden','true');sel.tabIndex=-1;const field=document.createElement('div');field.className='choiceField'+(['groupFilter','lightFilter','harmonyType'].includes(sel.id)?' compact':'');const trigger=document.createElement('button');trigger.type='button';trigger.className='choiceTrigger';trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');const value=document.createElement('span');value.className='choiceValue';value.textContent=sel.selectedOptions[0]?.textContent||'Выбрать';const chev=document.createElement('span');chev.className='choiceChevron';chev.textContent='⌄';trigger.append(value,chev);trigger.addEventListener('click',()=>active?.trigger===trigger?close():open(sel,trigger));sel.addEventListener('change',()=>{value.textContent=sel.selectedOptions[0]?.textContent||'Выбрать'});sel.parentNode.insertBefore(field,sel);field.append(trigger,sel)})})();
+selects.forEach(sel=>{sel.classList.add('chroma-native');sel.setAttribute('aria-hidden','true');sel.tabIndex=-1;const field=document.createElement('div');field.className='choiceField'+(['groupFilter','lightFilter','harmonyType'].includes(sel.id)?' compact':'');const trigger=document.createElement('button');trigger.type='button';trigger.className='choiceTrigger';trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');const value=document.createElement('span');value.className='choiceValue';value.textContent=sel.selectedOptions[0]?.textContent||'Выбрать';const chev=document.createElement('span');chev.className='choiceChevron';chev.textContent='⌄';trigger.append(value,chev);trigger.addEventListener('click',()=>active?.trigger===trigger?close():open(sel,trigger));sel.addEventListener('change',()=>{value.textContent=sel.selectedOptions[0]?.textContent||'Выбрать'});sel.parentNode.insertBefore(field,sel);field.append(trigger,sel)});
+const colorInputs=[...document.querySelectorAll('input[type="color"]')];
+const colorLabels={baseColor:'Основной цвет палитры',contrastText:'Цвет текста',contrastBg:'Цвет фона'};
+function openColor(input,trigger){
+ if(active)close();
+ const layer=document.createElement('div');layer.className='choiceLayer';
+ const panel=document.createElement('section');panel.className='choicePanel wide';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label',colorLabels[input.id]||'Выбор цвета');
+ const head=document.createElement('div');head.className='choiceHead';const title=document.createElement('strong');title.textContent=colorLabels[input.id]||'Выбери цвет';const x=document.createElement('button');x.type='button';x.className='choiceClose';x.setAttribute('aria-label','Закрыть');x.textContent='×';head.append(title,x);panel.append(head);
+ const search=document.createElement('input');search.className='choiceSearch';search.type='search';search.placeholder='Найти оттенок по названию…';search.setAttribute('aria-label','Поиск оттенка');panel.append(search);
+ const list=document.createElement('div');list.className='colorOptions';list.setAttribute('role','listbox');list.setAttribute('aria-label','Оттенки из каталога');panel.append(list);
+ const foot=document.createElement('div');foot.className='colorPanelFoot';const note=document.createElement('span');note.textContent='Выбор применится сразу';const current=document.createElement('strong');current.textContent=input.value.toUpperCase();foot.append(note,current);panel.append(foot);layer.append(panel);document.body.append(layer);
+ const previous=input.value.toLowerCase();
+ function render(q=''){list.innerHTML='';const needle=q.trim().toLocaleLowerCase('ru');colors.filter(c=>!needle||c[0].toLocaleLowerCase('ru').includes(needle)||c[2].toLocaleLowerCase('ru').includes(needle)||c[1].includes(needle)).forEach(c=>{const b=document.createElement('button');b.type='button';b.className='colorOption';b.setAttribute('role','option');b.setAttribute('aria-selected',String(c[1].toLowerCase()===input.value.toLowerCase()));const sw=document.createElement('span');sw.className='colorOptionSwatch';sw.style.background=c[1];const name=document.createElement('span');name.className='colorOptionName';name.textContent=c[0];const hex=document.createElement('span');hex.className='colorOptionHex';hex.textContent=c[1].toUpperCase();b.append(sw,name,hex);b.addEventListener('click',()=>{input.value=c[1];input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));current.textContent=c[1].toUpperCase();trigger.querySelector('.colorPreview').style.background=c[1];trigger.querySelector('.colorFieldText strong').textContent=c[0];trigger.querySelector('.colorFieldText small').textContent=c[1].toUpperCase();list.querySelectorAll('.colorOption').forEach(o=>o.setAttribute('aria-selected','false'));b.setAttribute('aria-selected','true');close()});list.append(b)});
+ if(!list.children.length){const empty=document.createElement('div');empty.className='choiceEmpty';empty.textContent='Подходящий оттенок не найден';list.append(empty)}}
+ render();search.addEventListener('input',()=>render(search.value));layer.addEventListener('click',e=>{if(e.target===layer)close()});x.addEventListener('click',close);
+ trigger.setAttribute('aria-expanded','true');active={layer,trigger};document.addEventListener('keydown',keys,true);requestAnimationFrame(()=>{layer.classList.add('open');search.focus()});
+}
+colorInputs.forEach(input=>{
+ input.classList.add('chroma-native');input.setAttribute('aria-hidden','true');input.tabIndex=-1;
+ const field=document.createElement('button');field.type='button';field.className='colorField';field.setAttribute('aria-haspopup','dialog');field.setAttribute('aria-expanded','false');
+ const preview=document.createElement('span');preview.className='colorPreview';preview.style.background=input.value;
+ const textBox=document.createElement('span');textBox.className='colorFieldText';const strong=document.createElement('strong');strong.textContent=colors.find(c=>c[1].toLowerCase()===input.value.toLowerCase())?.[0]||'Выбранный цвет';const small=document.createElement('small');small.textContent=input.value.toUpperCase();textBox.append(strong,small);const chev=document.createElement('span');chev.className='choiceChevron';chev.textContent='⌄';field.append(preview,textBox,chev);
+ field.addEventListener('click',()=>openColor(input,field));input.parentNode.insertBefore(field,input);input.parentNode.insertBefore(input,field.nextSibling);
+ input.addEventListener('input',()=>{preview.style.background=input.value;small.textContent=input.value.toUpperCase();strong.textContent=colors.find(c=>c[1].toLowerCase()===input.value.toLowerCase())?.[0]||'Выбранный цвет'});
+});
+})();
 
 function luminance(hex){let n=parseInt(hex.slice(1),16),a=[n>>16,(n>>8)&255,n&255].map(v=>v/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2));return .2126*a[0]+.7152*a[1]+.0722*a[2]}function updateContrast(){let fg=$('#contrastText').value,bg=$('#contrastBg').value,a=luminance(fg),b=luminance(bg),ratio=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);$('#contrastPreview').style.color=fg;$('#contrastPreview').style.background=bg;$('#contrastStats').innerHTML=`<span>Контраст: <strong>${ratio.toFixed(2)}:1</strong></span><span>${ratio>=7?'AAA — обычный текст':ratio>=4.5?'AA — обычный текст':ratio>=3?'AA — только крупный текст':'Недостаточно для обычного текста'}</span><span>${fg.toUpperCase()} / ${bg.toUpperCase()}</span>`}$('#contrastText').addEventListener('input',updateContrast);$('#contrastBg').addEventListener('input',updateContrast);updateContrast();
 renderCatalog();$("#colorCount").textContent=colors.length;
